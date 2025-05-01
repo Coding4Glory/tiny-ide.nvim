@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd(
     { 
         pattern = "yaml",
         callback = function()
-            vim.bo.smarttab = true
+            vim.opt_local.smarttab = true
             vim.bo.tabstop = 2
             vim.bo.shiftwidth = 2
             vim.bo.softtabstop = 2

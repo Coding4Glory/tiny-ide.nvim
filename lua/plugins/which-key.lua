@@ -2,7 +2,7 @@ return {
     'folke/which-key.nvim',
     event = 'VimEnter',
     opts = {
-        delay = 0,
+        delay = 1,
         icons = {
             mappings = vim.g.have_nerd_font,
             keys = vim.g.have_nerd_fond and {} or {
@@ -40,6 +40,7 @@ return {
             { '<leader>s', group = '[s]earch' },
             { '<leader>t', group = '[t]oggle' },
             { '<leader>g', group = '[g]it' },
+            { '<leader>a', group = '[a]reas' },
         }
     },
 }
