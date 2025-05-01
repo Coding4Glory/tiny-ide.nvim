@@ -17,6 +17,5 @@ return {
         vim.keymap.set('n', '<leader>sb', tlcBuiltin.buffers, { desc = 'Telescope [s]earch [s]each [b]uffers' })
         vim.keymap.set('n', '<leader>sh', tlcBuiltin.help_tags, { desc = 'Telescope [s]earch [h]elp' })
 
-
     end
 }
