@@ -1,6 +1,5 @@
--- disable netrw
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
+-- first things first
+require("bootstrap.disable-netrw")
 
 -- fix split
 vim.opt.splitright = true
