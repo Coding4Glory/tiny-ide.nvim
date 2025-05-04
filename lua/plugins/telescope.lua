@@ -12,10 +12,15 @@ return {
     },
     config = function() 
         local tlcBuiltin = require('telescope.builtin')
-        vim.keymap.set('n', '<leader>sf', tlcBuiltin.find_files, { desc = 'Telescope [s]earch [f]iles' })
-        vim.keymap.set('n', '<leader>sg', tlcBuiltin.live_grep, { desc = 'Telescope [s]earch [g]rep' })
-        vim.keymap.set('n', '<leader>sb', tlcBuiltin.buffers, { desc = 'Telescope [s]earch [s]each [b]uffers' })
-        vim.keymap.set('n', '<leader>sh', tlcBuiltin.help_tags, { desc = 'Telescope [s]earch [h]elp' })
-
+        -- normal mode
+        vim.keymap.set('n', '<leader>fb', tlcBuiltin.buffers, { desc = 'Telescope [f]ind [b]uffer' })
+        vim.keymap.set('n', '<leader>fc', function() tlcBuiltin.live_grep({ search_dirs = { vim.fn["stdpath"]("config"), }}) end, { desc = 'Telescope [f]ind in [c]config' })
+        vim.keymap.set('n', '<leader>ff', tlcBuiltin.find_files, { desc = 'Telescope [f]ind [f]iles' })
+        vim.keymap.set('n', '<leader>fg', tlcBuiltin.live_grep, { desc = 'Telescope [f]ind [g]rep in workdir' })
+        vim.keymap.set('n', '<leader>fh', tlcBuiltin.help_tags, { desc = 'Telescope [f]ind [h]elp' })
+        vim.keymap.set('n', '<leader>fo', function() tlcBulitin.live_grep({ grep_open_files = true }) end, { desc = 'Telescope [find] in [o]pen buffers'})
+        -- insert mode
+        vim.keymap.set('n', '<C-f>.', tlcBuiltin.grep_string, { desc = 'find in workdir' })
+        vim.keymap.set('i', '<C-f>o', function() tlcBuiltin.grep_string({ grep_open_files = true }) end, { desc = 'find in open buffers' })
     end
 }
