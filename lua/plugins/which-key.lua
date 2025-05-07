@@ -42,7 +42,8 @@ return {
             { '<leader>g', group = '[g]it' },
             -- { '<leader>a', group = '[a]reas' },
             { '<leader>c', group = '[c]ode' },
-            { '<leader>d', group = '[d]iagnostic' }
+            { '<leader>d', group = '[d]iagnostic' },
+            { '<leader>l', group = '[l]anguages' },
         }
     },
 }
