@@ -1,4 +1,3 @@
--- see :help which-key
 return {
     'folke/which-key.nvim',
     event = 'VimEnter',
@@ -35,15 +34,6 @@ return {
                 F10 = '<F10>',
                 F11 = '<F11>',
                 F12 = '<F12>',
-            },
-        },
-        keys = {
-            {
-                "<leader>?",
-                function()
-                    require("which-key").show({global = false })
-                end,
-                desc = "local keymaps"
             },
         },
         spec = {
