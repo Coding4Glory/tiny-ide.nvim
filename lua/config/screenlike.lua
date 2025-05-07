@@ -3,11 +3,9 @@ local function get_editor_count()
     local loaded_count = 0
     for _, b in ipairs(all_bufs) do
         if vim.fn.buflisted(b) == 1 then
-            print("buffer " ..b.. " loaded")
             loaded_count = loaded_count + 1
         end
     end
-    print("editor count: " ..loaded_count)
     return loaded_count
 end
 
