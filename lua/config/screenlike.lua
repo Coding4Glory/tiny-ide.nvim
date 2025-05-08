@@ -20,12 +20,16 @@ local function buffer_close(opts)
     end
     vim.api.nvim_err_writeln('No buffer left for window. Use :q')
 end
-
-vim.keymap.set('n', '<C-a>t', ":$tabnew<CR>", { desc = 'create [t]ab' })
-vim.keymap.set('n', '<C-a><Tab>', ":-tabnext<CR>", { desc = 'next <TAB>' })
-vim.keymap.set('n', '<C-a><S-Tab>', ":+tabnext<CR>", { desc = 'previou<S-TAB>' })
-vim.keymap.set('n', '<C-a>c', ":enew<CR>", { desc = '[n]ew buffer' })
-vim.keymap.set('n', '<C-a>n', ":bn<CR>", { desc = 'next buffer' })
-vim.keymap.set('n', '<C-a>x', buffer_close, { desc = 'close buffer' })
+if not vim.startswith(vim.env["TERM"], "screen") then
+    vim.keymap.set('n', '<C-a>t', ":$tabnew<CR>", { desc = 'create [t]ab' })
+    vim.keymap.set('n', '<C-a><Tab>', ":-tabnext<CR>", { desc = 'next <TAB>' })
+    vim.keymap.set('n', '<C-a><S-Tab>', ":+tabnext<CR>", { desc = 'previou<S-TAB>' })
+    vim.keymap.set('n', '<C-a>c', ":enew<CR>", { desc = '[n]ew buffer' })
+    vim.keymap.set('n', '<C-a>k', ":enew<CR>", { desc = '[k]ill buffer' })
+    vim.keymap.set('n', '<C-a>n', ":bn<CR>", { desc = '[n]ext buffer' })
+    vim.keymap.set('n', '<C-a>S', ":split<CR>", { desc = '[S]plit buffer horizontally' })
+    vim.keymap.set('n', '<C-a>|', ":vsplit<CR>", { desc = 'split buffer vertically' })
+    vim.keymap.set('n', '<C-a>X', buffer_close, { desc = 'close buffer' })
+end
 vim.api.nvim_create_user_command('Bc', buffer_close, {})
 vim.api.nvim_create_user_command('Term', 'split | term', {})
