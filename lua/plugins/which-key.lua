@@ -43,7 +43,7 @@ return {
             -- { '<leader>a', group = '[a]reas' },
             { '<leader>c', group = '[c]ode' },
             { '<leader>d', group = '[d]iagnostic' },
-            { '<leader>l', group = '[l]anguages' },
+            { '<leader>s', group = '[s]elect' },
         }
     },
 }
