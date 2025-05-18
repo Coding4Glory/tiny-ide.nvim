@@ -24,7 +24,7 @@ return {
 				vim.keymap.set("n", "<C-f>.", tlcBuiltin.grep_string, { desc = "find in workdir" })
                 vim.keymap.set("n", "<C-f>f", function() tlcBuiltin.current_buffer_fuzzy_find({ skip_empty_lines = true }) end, { desc = "fuzzy [f]ind in buffer" })
                 -- select
-                vim.keymap.set("n", "<leader>sc", function() tlcBuiltin.colorschemes(require("telescope.themes").get_dropdown({ enable_preview = true })) end, { desc = "select [c]olor theme" })
+                vim.keymap.set("n", "<leader>sc", function() tlcBuiltin.colorscheme(require("telescope.themes").get_dropdown({ enable_preview = true })) end, { desc = "select [c]olor theme" })
 				-- # insert mode
 				vim.keymap.set("i", "<C-f>o", function()
 					tlcBuiltin.grep_string({ grep_open_files = true })

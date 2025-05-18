@@ -3,7 +3,7 @@ local custom_indent = vim.api.nvim_create_augroup("custom_identation", { clear =
 
 vim.api.nvim_create_autocmd(
     { "FileType" },
-    { 
+    {
         pattern = "yaml",
         callback = function()
             vim.opt_local.smarttab = true
@@ -17,8 +17,22 @@ vim.api.nvim_create_autocmd(
 )
 vim.api.nvim_create_autocmd(
     { "FileType" },
-    { 
+    {
         pattern = "lua",
+        callback = function()
+            vim.bo.expandtab = true
+            vim.bo.tabstop = 4
+            vim.bo.shiftwidth = 4
+            vim.bo.softtabstop = 4
+        end,
+        group = custom_indent,
+        desc = "4 - 4 - 4 for lua",
+    }
+)
+vim.api.nvim_create_autocmd(
+    { "FileType" },
+    {
+        pattern = "php",
         callback = function()
             vim.bo.expandtab = true
             vim.bo.tabstop = 4
