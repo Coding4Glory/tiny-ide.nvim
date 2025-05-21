@@ -40,7 +40,7 @@ return {
                 { name = 'luasnip' }, -- For luasnip users.
                 --   { name = 'ultisnips' }, -- For ultisnips users.
                 --   { name = 'snippy' }, -- For snippy users.
-                { 
+                {
                     name = 'lazydev',
                     group_index = 0
                 },
@@ -58,7 +58,7 @@ return {
                   { name = 'buffer' },
               })
         )
-        require("cmp_git").setup() ]]-- 
+        require("cmp_git").setup() ]]--
 
         -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
         cmp.setup.cmdline({ '/', '?' }, {
@@ -80,7 +80,7 @@ return {
         })
 
         -- Set up lspconfig.
-        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
         -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
         -- require('lspconfig')['lua_ls'].setup {
         --    capabilities = capabilities
