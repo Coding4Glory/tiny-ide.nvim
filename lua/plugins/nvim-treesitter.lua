@@ -8,10 +8,8 @@ return {
             ignore_install = {},
             auto_install = false,
             sync_install = false,
-            modules = {
-                highlight = {
-                    enable = true
-                },
+            highlight = {
+                enable = true,
             },
         })
     end,
