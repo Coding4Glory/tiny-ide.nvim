@@ -12,8 +12,13 @@ return {
         filters = {
             custom = { "^\\.git$" }
         },
+        git = {
+            enable = true,
+            ignore = false,
+        },
         renderer = {
             icons = {
+                git_placement = "after",
                 glyphs = {
                     default = ".",
                     symlink = "🔗",
