@@ -3,7 +3,7 @@ require("options")
 
 -- load plugins
 require("config.filetypes")
-require("config.lazy")
+require("plugins.lazy")
 require("config.tiny")
 -- require("config.screenlike")
 

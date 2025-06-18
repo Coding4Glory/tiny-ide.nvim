@@ -19,7 +19,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     -- import your plugins
-    { import = "plugins" },
     { import = "plugins/tiny" },
     { import = "plugins/tiny-ide" },
     { import = "plugins/custom" },
