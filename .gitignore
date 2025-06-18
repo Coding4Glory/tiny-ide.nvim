@@ -1,2 +1,7 @@
 lazy-lock.json
+
 templates/*
+custom/*
+!custom/nvim-tree.lua
+
+*.swp
