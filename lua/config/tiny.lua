@@ -47,9 +47,5 @@ vim.keymap.set("n", "<C-w><del>", buffer_close, { desc = "close buffer" })
 --    desc = "opens new window if last window is closed but editor buffers awailable"
 -- })
 
--- terminal settings
-vim.api.nvim_create_user_command('Term', 'split | term', {})
-vim.keymap.set("t", "<C-w><Esc>", "<C-\\><C-n>", { desc = "back to normal mode" })
-
 -- other bindings
 vim.keymap.set("n", "<leader>tn", function() vim.o.number = not vim.o.number end, { desc = "toggle line [n]umbers" })

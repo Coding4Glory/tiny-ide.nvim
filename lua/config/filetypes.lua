@@ -1,3 +1,4 @@
+-- TODO: convert to a per file type structure
 vim.cmd("filetype plugin indent on")
 local custom_indent = vim.api.nvim_create_augroup("custom_identation", { clear = true })
 
