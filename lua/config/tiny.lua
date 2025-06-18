@@ -1,10 +1,3 @@
--- fix split
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-
--- show context
-vim.opt.scrolloff = 2
-
 -- better buffer control
 local function get_editor_count()
     local all_bufs = vim.api.nvim_list_bufs()

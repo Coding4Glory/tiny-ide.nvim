@@ -1,3 +1,5 @@
+-- screen like bindings
+-- TODO: become a terminal control binding set instead of a window control set
 if not vim.startswith(vim.env["TERM"], "screen") then
     vim.keymap.set('n', '<C-a>t', ":$tabnew<CR>", { desc = 'create [t]ab' })
     -- vim.keymap.set('n', '<C-a><Tab>', ":-tabnext<CR>", { desc = 'next <TAB>' })
@@ -11,4 +13,5 @@ if not vim.startswith(vim.env["TERM"], "screen") then
     vim.keymap.set('n', '<C-a>|', ":vsplit<CR>", { desc = 'split buffer vertically' })
     -- vim.keymap.set('n', '<C-a>X', buffer_close, { desc = 'close buffer' })
 end
+
 

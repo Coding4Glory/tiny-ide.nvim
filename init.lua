@@ -6,5 +6,5 @@ require("config.filetypes")
 require("plugins.lazy")
 require("config.tiny")
 -- require("config.screenlike")
-
+-- require("keybindings")
 

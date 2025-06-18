@@ -1,6 +1,0 @@
-vim.keymap.set('v', '<Tab>', '>', { desc = 'indent'})
-vim.keymap.set('v', '<S-Tab>', '<', { desc = 'outdent'})
-vim.keymap.set('n', '<S-k>k', 'gcc', { desc = 'toggle comment' })
-vim.keymap.set('n', '<S-k>u', 'gcc', { desc = 'toggle comment' })
-vim.keymap.set('n', '<S-k><S-k>', 'gcc', { desc = 'toggle comment' })
-vim.keymap.set('n', '<S-k><S-u>', 'gcc', { desc = 'toggle comment' })
