@@ -6,7 +6,7 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = { "lua_ls" },
+			ensure_installed = { "lua_ls", "pyrefly" },
 		},
 	},
 	{
@@ -14,10 +14,6 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lspconfig = require("lspconfig")
-
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
 
 			vim.keymap.set("n", "<leader>d<space>", vim.diagnostic.open_float, { desc = "show" })
 			vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "goto next" })
@@ -50,6 +46,7 @@ return {
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.formatting.stylua,
+                    null_ls.builtins.formatting.black,
 				},
 			})
 

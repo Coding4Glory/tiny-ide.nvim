@@ -21,8 +21,8 @@ return {
                     modified = "*",
                     hidden = "🤦🏽‍♀️",
                     folder = {
-                        arrow_closed = "",
-                        arrow_open = "",
+                        arrow_closed = "+",
+                        arrow_open = "-",
                         default = "🗂",
                         open = "📂",
                         empty = "📁",

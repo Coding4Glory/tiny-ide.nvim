@@ -1,5 +1,5 @@
 -- first things first
--- require("bootstrap.disable-netrw")
+require("options")
 
 -- load plugins
 require("config.filetypes")
