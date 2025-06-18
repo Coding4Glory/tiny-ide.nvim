@@ -4,7 +4,7 @@ require("options")
 -- load plugins
 require("config.filetypes")
 require("plugins.lazy")
-require("config.tiny")
+require("tiny")
 
 -- final adjustments
 require('keybindings')
