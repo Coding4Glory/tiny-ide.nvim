@@ -13,5 +13,3 @@ if not vim.startswith(vim.env["TERM"], "screen") then
     vim.keymap.set('n', '<C-a>|', ":vsplit<CR>", { desc = 'split buffer vertically' })
     -- vim.keymap.set('n', '<C-a>X', buffer_close, { desc = 'close buffer' })
 end
-
-

@@ -1,4 +1,5 @@
 require 'keybindings.screenlike'
+require 'keybindings.terminal'
 
 --[[
 local binding_folder_name = 'keybindings'
