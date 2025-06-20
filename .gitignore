@@ -2,8 +2,9 @@ lazy-lock.json
 
 plugin/
 templates/
-custom/*
+custom/
 !custom/nvim-tree.lua
+config/
 ftplugin/*
 !ftplugin/lua.vim
 !ftplugin/vim.vim
