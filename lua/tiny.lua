@@ -1,3 +1,5 @@
+vim.cmd("filetype plugin indent on")
+
 -- better buffer control
 local function get_editor_count()
     local all_bufs = vim.api.nvim_list_bufs()

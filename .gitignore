@@ -1,7 +1,11 @@
 lazy-lock.json
 
-templates/*
+plugin/
+templates/
 custom/*
 !custom/nvim-tree.lua
+ftplugin/*
+!ftplugin/lua.vim
+!ftplugin/vim.vim
 
 *.swp
