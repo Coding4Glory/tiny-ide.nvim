@@ -24,7 +24,7 @@ return {
                     symlink = "🔗",
                     bookmark = "🔖",
                     modified = "*",
-                    hidden = "🤦🏽‍♀️",
+                    hidden = "👁",
                     folder = {
                         arrow_closed = "+",
                         arrow_open = "-",
@@ -36,17 +36,25 @@ return {
                         symlink_open = "🖇"
                     },
                     git = {
-                        unstaged = "✗",
+                        unstaged = "★",
                         staged = "✓",
                         unmerged = "⚠",
                         renamed = "➜",
-                        untracked = "★",
+                        untracked = "✗",
                         deleted = "🗑",
                         ignored = "🚫",
                      }
                 }
             }
         },
+        diagnostics = {
+            icons = {
+                hint = "💭",
+                info = "ℹ",
+                warning = "⚠",
+                error = "⚡"
+            }
+        }
     }
     -- config = function()
     --     require("nvim-tree").setup {
