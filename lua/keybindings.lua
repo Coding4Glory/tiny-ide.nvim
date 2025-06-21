@@ -1,6 +1,4 @@
--- require 'keybindings.screenlike'
-require 'keybindings.terminal'
-
+-- may be removed
 --[[
 local binding_folder_name = 'keybindings'
 local binding_path = vim.fn.stdpath('config') .. '/lua/' .. binding_folder_name
