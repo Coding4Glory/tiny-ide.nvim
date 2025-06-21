@@ -2,7 +2,6 @@
 require("options")
 
 -- load plugins
-require("config.filetypes")
 require("plugins.lazy")
 require("tiny")
 

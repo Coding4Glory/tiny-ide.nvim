@@ -1,4 +1,4 @@
-require 'keybindings.screenlike'
+-- require 'keybindings.screenlike'
 require 'keybindings.terminal'
 
 --[[
