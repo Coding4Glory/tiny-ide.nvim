@@ -51,3 +51,9 @@ vim.keymap.set("n", "<C-w><del>", buffer_close, { desc = "close buffer" })
 
 -- other bindings
 vim.keymap.set("n", "<leader>tn", function() vim.o.number = not vim.o.number end, { desc = "toggle line [n]umbers" })
+
+-- project setting support
+if (vim.uv or vim.loop).fs_stat('.nvim/init.lua') then
+    -- require does not work here
+    vim.cmd('source .nvim/init.lua')
+end
