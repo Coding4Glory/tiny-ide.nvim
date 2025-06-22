@@ -2,7 +2,7 @@ vim.cmd("filetype plugin indent on")
 
 -- usefull toggles
 vim.keymap.set("n", "<leader>tn", function() vim.o.number = not vim.o.number end, { desc = "toggle line [n]umbers" })
-vim.keymap.set("n", "<leader>tl", function() vim.o.list = not vim.o.list end, { desc = "toggle line [n]umbers" })
+vim.keymap.set("n", "<leader>tl", function() vim.o.list = not vim.o.list end, { desc = "toggle [l]ist" })
 
 -- navigate windows faster (inspired by help)
 vim.keymap.set({ 'n', 'i', 'v' }, '<A-h>', '<C-\\><C-n><C-w>h', { desc = 'move to left window' })
