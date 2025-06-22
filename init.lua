@@ -6,5 +6,4 @@ require("plugins.lazy")
 require("tiny")
 
 -- final adjustments
-require('keybindings')
 require('commands')
