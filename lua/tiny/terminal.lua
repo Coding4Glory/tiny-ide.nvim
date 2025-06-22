@@ -14,3 +14,5 @@ end, {})
 vim.api.nvim_create_user_command('Bterm', function()
     split_terminal(true)
 end, {})
+
+vim.keymap.set("t", "<C-w><Esc>", "<C-\\><C-n>", { desc = "back to normal mode" })
