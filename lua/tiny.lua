@@ -17,7 +17,9 @@ vim.keymap.set({ 'n', 'i', 'v', 't' }, '<A-Up>', '<C-\\><C-n><C-w>k', { desc = '
 
 require('tiny.buffers')
 require('tiny.terminal')
-require('tiny.projectsettings')
 require('tiny.templates')
+require('tiny.modeline')
+-- should always be last
+require('tiny.projectsettings')
 
 --  vim: set ts=4 sw=4 tw=0 et:
