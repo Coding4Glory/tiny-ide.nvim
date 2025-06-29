@@ -1,8 +1,3 @@
--- require('tiny.buffers')
--- require('tiny.terminal')
--- require('tiny.templates')
--- require('tiny.projectsettings')
-
 ---@class Tiny
 ---@field defaults TinyConfig
 ---@field setup function
@@ -35,6 +30,10 @@ M.bindings = function ()
     vim.keymap.set({ 'n', 'i', 'v', 't' }, '<A-Right>', '<C-\\><C-n><C-w>l', { desc = 'move to right window' })
     vim.keymap.set({ 'n', 'i', 'v', 't' }, '<A-Down>', '<C-\\><C-n><C-w>j', { desc = 'move to lower window' })
     vim.keymap.set({ 'n', 'i', 'v', 't' }, '<A-Up>', '<C-\\><C-n><C-w>k', { desc = 'move to upper window' })
+
+    -- switch tabs easily
+    vim.keymap.set('n', '<leader><Tab>', '<cmd>tabn<CR>', { desc = 'next tab' })
+    vim.keymap.set('n', '<leader><S-Tab>', '<cmd>tabp<CR>', { desc = 'previous tab' })
 end
 
 ---@param opts TinyConfig?
