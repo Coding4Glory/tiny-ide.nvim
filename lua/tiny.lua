@@ -6,17 +6,34 @@ local M = {}
 
 ---@class TinyConfig
 M.defaults = {
-    buffers = true,
     terminal = true,
-    templates = true,
-    modeline = true,
     keymaps = true,
-    projectsettings = false,
 }
 
+M.terminal = function()
+    vim.api.nvim_create_user_command('Term', 'tabnew | term', {})
+    vim.api.nvim_create_user_command('Vterm', 'vs | term', {})
+
+    local function split_terminal(d)
+        local split_before = vim.opt.splitbelow
+        vim.opt.splitbelow = d
+        vim.cmd('sp | term');
+        vim.opt.splitbelow = split_before
+    end
+
+    vim.api.nvim_create_user_command('Sterm', function()
+        split_terminal(false)
+    end, {})
+    vim.api.nvim_create_user_command('Bterm', function()
+        split_terminal(true)
+    end, {})
+
+    vim.keymap.set("t", "<C-w><Esc>", "<C-\\><C-n>", { desc = "back to normal mode" })
+end
+
 ---@private
-M.bindings = function ()
-     -- usefull toggles
+M.bindings = function()
+    -- usefull toggles
     vim.keymap.set("n", "<leader>tn", function() vim.o.number = not vim.o.number end, { desc = "toggle line [n]umbers" })
     vim.keymap.set("n", "<leader>tl", function() vim.o.list = not vim.o.list end, { desc = "toggle [l]ist" })
 
@@ -39,12 +56,8 @@ end
 ---@param opts TinyConfig?
 M.setup = function(opts)
     local config = vim.tbl_deep_extend('force', M.defaults, opts or {})
-    if config.buffers then require('tiny.buffers') end
-    if config.terminal then require('tiny.terminal') end
-    if config.templates then require('tiny.templates') end
-    if config.modeline then require('tiny.modeline') end
+    if config.terminal then M.terminal() end
     if config.keymaps then M.bindings() end
-    if config.projectsettings then require('tiny.projectsettings') end
 end
 
 return M

@@ -8,7 +8,8 @@ return {
         opts = {
             ensure_installed = {
                 "lua_ls",
-                "pyrefly",
+                "rust_analyzer",
+                "phpactor",
             },
         },
     },

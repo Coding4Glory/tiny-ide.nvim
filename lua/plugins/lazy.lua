@@ -18,8 +18,9 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
+    { import = "plugins/common" },
+    { import = "plugins/ide" },
     { import = "plugins/tiny" },
-    { import = "plugins/tiny-ide" },
     -- import your plugins
     { import = "plugins/custom" },
   },
@@ -31,4 +32,5 @@ require("lazy").setup({
   install = { colorscheme = { "habamax" } },
   -- don't stress github
   checker = { enabled = false },
+  dev = { path = "~/source/repos/nvim", pattern = { "*.nvim" } }
 })
