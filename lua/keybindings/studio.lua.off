@@ -1,7 +1,0 @@
--- studio does not really toggle
-vim.keymap.set('v', '<Tab>', '>', { desc = 'indent'})
-vim.keymap.set('v', '<S-Tab>', '<', { desc = 'outdent'})
-vim.keymap.set('n', '<C-k>k', 'gcc', { desc = 'toggle comment' })
-vim.keymap.set('n', '<C-k>u', 'gcc', { desc = 'toggle comment' })
-vim.keymap.set('n', '<C-k><C-k>', 'gcc', { desc = 'toggle comment' })
-vim.keymap.set('n', '<C-k><C-u>', 'gcc', { desc = 'toggle comment' })
