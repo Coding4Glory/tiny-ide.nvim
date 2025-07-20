@@ -1,12 +1,18 @@
-# tiny.nvim
+# tiny-ide.nvim
 
-The probably tiniest neo vim distribution you might find. The goal of this disribution is to be a small as usefull starting point with a low number of modules.
+The probably tiniest neo vim distribution you might find.
+
+The goal of this disribution is to be a small as usefull starting point with
+a low number of modules.
+
+> ⚠ If you're searching for a beginner friendly configuration you might look somewhere else ⚠
 
 ## Installation
 
 This depends on your personal favour. Plugins will be installed on first start.
 
-> Regardless of the installation method you should consider deleting the .git folder and the .gitignore file as well
+> Regardless of the installation method you should consider deleting the *.git*
+> folder and the *.gitignore* file as well
 
 ### As main configuration
 
@@ -19,13 +25,15 @@ This depends on your personal favour. Plugins will be installed on first start.
 
 ### Besides existing configuration
 
-*tvim* is just an example and can be replaced with any name not colliding on your system. Just ensure the foldername and the alias are the same.
+*tvim* is just an example and can be replaced with any name not colliding on
+your system. Just ensure the foldername and the alias are the same.
 
     git clone <repo-url> ~/.config/tvim -b release
     cd ~/.config/tvim checkout -b myconfig
     git remote add myrepo <new-repo-url>
+    # setup an alias in bash
     source <<EOF
-    $(echo 'alias tvim="NVOM_APPNAME=tvim" | tee -a ~/.profile)
+    $(echo 'alias tvim="NVIM_APPNAME=tvim" | tee -a ~/.profile)
     EOF
     tvim
 
@@ -58,28 +66,31 @@ The file structure is simple
     │   └── skel.lua
     └── init.lua
 
-The default loading order is as following (ommiting the lua/ folder). This can be changed in *lua/plugins/lazy.lua*
+The default loading order is as following (ommiting the lua/ folder). This
+can be changed in *lua/plugins/lazy.lua*. It's recomended to place additional
+plugin configurations in the custom folder. **The line required to load the
+custom folder is commented out in `plugins/lazy.loa`.** The plugin prepared
+in the custom folder might cause issues with netrw. To avoid those it's
 
 1. init.lua
     1. options.lua
     1. lazy.lua
+        1. plugins/common
+        1. plugins/ide
         1. plugins/tiny
-        1. plugins/tiny-ide
         1. plugins/custom
     1. tiny.lua
-        1. tiny/buffers.lua
-        1. tiny/terminal.lua
-        1. tiny/templates.lua
-        1. tiny/modeline.lua
-        1. tiny/projectsettings.lua
 
-### tile type plugins
+### File type plugins
 
-tiny.nvim uses the native ftplugin loading mechanism to set file type specific settings. Those files have to be written in classic VimScript, examples are included for lua and vimscript.
+tiny-ide.nvim uses the native ftplugin loading mechanism to set file type specific
+settings. Those files have to be written in classic VimScript, examples are
+included for lua and vimscript.
 
 ## Included Plugins
 
-Plugins are separated in two categories: Basic, to be found in the tiny folder and advanced in the tiny-ide folder.
+Plugins are separated in two categories: Basic, to be found in the tiny folder
+and advanced in the tiny-ide folder.
 
 - common
     - [neogit](https://github.com/NeogitOrg/neogit)
@@ -107,19 +118,50 @@ Plugins are separated in two categories: Basic, to be found in the tiny folder a
     - [templates](https://github.com/Coding4Glory/tiny-teplates.nvim)
     - [windows](https://github.com/Coding4Glory/tiny-windows.nvim)
 - custom
-    - [nvim-tree]() *(bonus)*
+    - [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua) *(bonus)*
 
 ## Troubleshooting
 
-Since this distribution is merely a starting point you might end up in a situation where your neovim does not perform as expected. Checkout the tiny-ide.nvim branch as a "safe mode" and your own config in a worktree. The tiny-ide config contains support for lua so you can fix your config with some ide support.
+Since this distribution is merely a starting point you might end up in a
+situation where your neovim does not perform as expected. Checkout the
+tiny-ide.nvim branch as a "safe mode" and your own config in a worktree. The
+tiny-ide config contains support for lua so you can fix your config with some
+ide support.
 
-The tiny.nvim setup can be usefull in situations where you want or need a more bare experience.
+The tiny.nvim branch can be usefull in situations where you want or need a
+more bare experience.
+
+Alternatively you can also start nvim with `-u NONE` or `--clean` to avoid
+config processing, see `:help startup-options` for details.
 
 Never forget: `:help help` 😎
 
+## Removal
+
+To get rid of this configuration remove your local copy following the default
+paths. If you checked this out into a different directory or used the
+NVIM_APPNAME variable replace *nvim* with your appname
+
+    # deletes your entire nvim configuration
+    rm -rf ~/.config/nvim
+    # deletes all plugins
+    rm -rf ~/.local/share/nvim/lazy
+    rm -rf ~/.local/share/nvim/mason
+    rm -rf ~/.local/share/nvim/tiny-pjs.nvim
+
 ## Trivia
 
-I came up with this idea after struggling with [LunarVim][1] which was my favourite before because it didn't modify the default config but uses it's own launch script. But it has to many dependencies for a daily driver. Then I stumbled across [kickstart.nvim][2] and must say for a *starting point claiming to be not distribution* it looks a little large, since it includes mini.nvim consiting already of 40 mini plugins. Finally I decided to start my own configuration and pick my plugins with some help from [typecraft on youtube][3] ([full course][4]). So I do the contrary to [kickstart.nvim][2] and call my small starter configuration a distribution. During hacking the config I started moving out parts into own modules. So finally it's not as *tiny* as it was meant.
+I came up with this idea after struggling with [LunarVim][1] which was my
+favourite before because it didn't modify the default config but uses it's own
+launch script. But it has to many dependencies for a daily driver. Then I
+stumbled across [kickstart.nvim][2] and must say for a *starting point
+claiming to be not a distribution* it looks a little large, since it includes
+[mini.nvim][7] consiting already of 40 mini plugins. Finally I decided to start my
+own configuration and pick my plugins with some help from [typecraft on youtube][3]
+([full course][4]). So I do the contrary to [kickstart.nvim][2] and call my
+small starter configuration a distribution. During hacking the config I
+started moving out parts into own modules. So finally it's not as *tiny* as it
+was meant.
 
 
 [1]: https://www.lunarvim.org/
@@ -128,3 +170,5 @@ I came up with this idea after struggling with [LunarVim][1] which was my favour
 [4]: https://typecraft.dev/neovim-for-newbs
 [5]: https://neovim.io/doc/user/pi_netrw.html
 [6]: https://github.com/nvim-tree/nvim-tree.lua
+[7]: https://github.com/echasnovski/mini.nvim
+

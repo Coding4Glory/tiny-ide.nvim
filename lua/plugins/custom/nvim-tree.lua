@@ -6,7 +6,7 @@ return {
         "nvim-tree/nvim-web-devicons",
     },
     keys = {
-        { "<leader>te", "<CMD>NvimTreeToggle<CR>", desc = "toggle file [e]xplorer" },
+        { "<leader>tf", "<CMD>NvimTreeToggle<CR>", desc = "toggle [f]iletree" },
     },
     opts = {
         filters = {

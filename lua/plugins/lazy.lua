@@ -22,15 +22,15 @@ require("lazy").setup({
     { import = "plugins/ide" },
     { import = "plugins/tiny" },
     -- import your plugins
-    { import = "plugins/custom" },
+    -- check :help nvim-tree.disable_netrw after enabling
+    -- { import = "plugins/custom" },
   },
   rocks = {
     enabled = false,
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "habamax" } },
+  install = { colorscheme = { "retrobox" } },
   -- don't stress github
   checker = { enabled = false },
-  dev = { path = "~/source/repos/nvim", pattern = { "*.nvim" } }
 })
