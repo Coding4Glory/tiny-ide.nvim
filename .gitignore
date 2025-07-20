@@ -1,12 +1,19 @@
+# you might want to keep the lock in your local repo
+# at least it's recommended by lazy to do so, it's
+# excluded in the public repo by purpose
 lazy-lock.json
 
+# no swap files please
+*.swp
+
+# following files are excluded to prevent accidential
+# changes in the config template
+lua/options.lua
 plugin/
 templates/
 custom/
-!custom/nvim-tree.lua
 config/
 ftplugin/*
-!ftplugin/lua.vim
-!ftplugin/vim.vim
 
-*.swp
+# local project settings
+.nvim/
