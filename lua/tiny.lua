@@ -68,8 +68,8 @@ M.numbers = function()
         {
             callback = function(a)
                 if vim.api.nvim_get_option_value('modifiable', { buf = a.buf }) == true then
-                    vim.api.nvim_set_option_value('number', true, { scope = 'local', buf = a.buf })
-                    vim.api.nvim_set_option_value('relativenumber', true, { scope = 'local', buf = a.buf })
+                    vim.api.nvim_set_option_value('number', true, { scope = 'local' })
+                    vim.api.nvim_set_option_value('relativenumber', true, { scope = 'local' })
                 end
             end,
             group = number_group,
@@ -81,8 +81,8 @@ M.numbers = function()
             group = number_group,
             desc = 'add relative numbers on enter',
             callback = function(a)
-                if vim.api.nvim_get_option_value("number", { scope = 'local', buf = a.buf }) == true then
-                    vim.api.nvim_set_option_value("relativenumber", true, { scope = 'local', buf = a.buf })
+                if vim.api.nvim_get_option_value("number", { scope = 'local' }) == true then
+                    vim.api.nvim_set_option_value("relativenumber", true, { scope = 'local' })
                 end
             end
         })
