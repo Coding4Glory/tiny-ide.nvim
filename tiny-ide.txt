@@ -1,0 +1,205 @@
+*tiny-ide.nvim.txt*          For neovim-0.12         Last change: 2025 July 20
+
+==============================================================================
+Table of Contents                            *tiny-ide.nvim-table-of-contents*
+
+1. tiny-ide.nvim                                 |tiny-ide.nvim-tiny-ide.nvim|
+  - Installation                    |tiny-ide.nvim-tiny-ide.nvim-installation|
+  - Configuration                  |tiny-ide.nvim-tiny-ide.nvim-configuration|
+  - Included Plugins            |tiny-ide.nvim-tiny-ide.nvim-included-plugins|
+  - Troubleshooting              |tiny-ide.nvim-tiny-ide.nvim-troubleshooting|
+  - Removal                              |tiny-ide.nvim-tiny-ide.nvim-removal|
+  - Trivia                                |tiny-ide.nvim-tiny-ide.nvim-trivia|
+
+==============================================================================
+1. tiny-ide.nvim                                 *tiny-ide.nvim-tiny-ide.nvim*
+
+The probably tiniest neo vim distribution you might find.
+
+The goal of this disribution is to be a small as usefull starting point with a
+low number of modules.
+
+
+  If you’re searching for a beginner friendly configuration you might look
+  somewhere else
+
+INSTALLATION                        *tiny-ide.nvim-tiny-ide.nvim-installation*
+
+Thisdepends on your personal favour. Plugins will be installed on first start.
+
+
+  Regardless of the installation method you should consider deleting the _.git_
+  folder and the _.gitignore_ file as well
+
+AS MAIN CONFIGURATION ~
+
+>
+    git clone <repo-url> ~/.config/nvim -b release
+    cd ~/.config/nvim checkout -b myconfig
+    git remote add myrepo <new-repo-url>
+    git push --set-upstream myrepo myconfig
+    nvim
+<
+
+
+BESIDES EXISTING CONFIGURATION ~
+
+_tvim_ is just an example and can be replaced with any name not colliding on
+your system. Just ensure the foldername and the alias are the same.
+
+>
+    git clone <repo-url> ~/.config/tvim -b release
+    cd ~/.config/tvim checkout -b myconfig
+    git remote add myrepo <new-repo-url>
+    # setup an alias in bash
+    source <<EOF
+    $(echo 'alias tvim="NVIM_APPNAME=tvim" | tee -a ~/.profile)
+    EOF
+    tvim
+<
+
+
+CONFIGURATION                      *tiny-ide.nvim-tiny-ide.nvim-configuration*
+
+This IS a configuration
+
+Thefile structure is simple
+
+>
+    .
+    ├── ftplugin
+    │   ├── lua.vim
+    │   └── vim.vim
+    ├── lua
+    │   ├── plugins
+    │   │   ├── custom
+    │   │   ├── tiny
+    │   │   ├── tiny-ide
+    │   │   └── lazy.lua
+    │   ├── tiny
+    │   │   ├── buffers.lua
+    │   │   ├── modeline.lua
+    │   │   ├── projectsettings.lua
+    │   │   ├── templates.lua
+    │   │   └── terminal.lua
+    │   ├── options.lua
+    │   └── tiny.lua
+    ├── templates
+    │   ├── ftplugin.vim
+    │   └── skel.lua
+    └── init.lua
+<
+
+The default loading order is as following (ommiting the lua/ folder). This can
+be changed in _lua/plugins/lazy.lua_. It’s recomended to place additional
+plugin configurations in the custom folder. **The line required to load the
+custom folder is commented out in plugins/lazy.loa.** The plugin prepared in
+the custom folder might cause issues with netrw. To avoid those it’s
+
+1. init.lua1. options.lua
+2. lazy.lua1. plugins/common
+2. plugins/ide
+3. plugins/tiny
+4. plugins/custom
+
+
+3. tiny.lua
+
+
+
+
+FILE TYPE PLUGINS ~
+
+tiny-ide.nvim uses the native ftplugin loading mechanism to set file type
+specific settings. Those files have to be written in classic VimScript,
+examples are included for lua and vimscript.
+
+
+INCLUDED PLUGINS                *tiny-ide.nvim-tiny-ide.nvim-included-plugins*
+
+Plugins are separated in two categories: Basic, to be found in the tiny folder
+and advanced in the tiny-ide folder.
+
+- common
+    - neogit <https://github.com/NeogitOrg/neogit>
+    - netrw-nvim <https://github.com/prichrd/netrw.nvim>
+    - plenary.nvim <https://github.com/nvim-lua/plenary.nvim>
+    - telescope.nvim <https://github.com/nvim-telescope/telescope.nvim>
+    - telescope-ui-select.nvim <https://github.com/nvim-telescope/telescope.nvim>
+    - todo-comments.nvim <https://github.com/folke/todo-comments.nvim>
+    - which-key.nvim <https://github.com/folke/which-key.nvim>
+- ide
+    - cmp-nvim-lsp <https://github.com/hrsh7th/cmp-nvim-lsp>
+    - lazydev.nvim <https://github.com/folke/lazydev.nvim>
+    - mason.nvim <https://github.com/williamboman/mason.nvim>
+    - mason-lspconfig.nvim <https://williamboman/mason-lspconfig.nvim>
+    - nvim-lspconfig <https://github.com/neovim/nvim-lspconfig>
+    - LuaSnip <https://github.com/L3MON4D3/LuaSnip>
+    - cmp_luasnip <https://github.com/saadparwaiz1/cmp_luasnip>
+    - friendly-snippets <https://github.com/rafamadriz/friendly-snippets>
+    - none_ls.nvim <https://github.com/nvimtools/none-ls.nvim>
+    - nvim-cmp <https://github.com/hrsh7th/cmp-nvim>
+    - treesitter <https://github.com/nvim-treesitter/nvim-treesitter>
+- tiny
+    - modeline <https://github.com/Coding4Glory/tiny-modeline.nvim>
+    - projectsettings <https://github.com/Coding4Glory/tiny-pjs.nvim>
+    - templates <https://github.com/Coding4Glory/tiny-teplates.nvim>
+    - windows <https://github.com/Coding4Glory/tiny-windows.nvim>
+- custom
+    - nvim-tree <https://github.com/nvim-tree/nvim-tree.lua> _(bonus)_
+
+
+TROUBLESHOOTING                  *tiny-ide.nvim-tiny-ide.nvim-troubleshooting*
+
+Since this distribution is merely a starting point you might end up in a
+situation where your neovim does not perform as expected. Checkout the
+tiny-ide.nvim branch as a "safe mode" and your own config in a worktree. The
+tiny-ide config contains support for lua so you can fix your config with some
+ide support.
+
+The tiny.nvim branch can be usefull in situations where you want or need a more
+bare experience.
+
+Alternatively you can also start nvim with `-u NONE` or `--clean` to avoid
+config processing, see `:help startup-options` for details.
+
+Never forget: `:help help`
+
+
+REMOVAL                                  *tiny-ide.nvim-tiny-ide.nvim-removal*
+
+Toget rid of this configuration remove your local copy following the default
+paths. If you checked this out into a different directory or used the
+NVIM_APPNAME variable replace _nvim_ with your appname
+
+>
+    # deletes your entire nvim configuration
+    rm -rf ~/.config/nvim
+    # deletes all plugins
+    rm -rf ~/.local/share/nvim/lazy
+    rm -rf ~/.local/share/nvim/mason
+    rm -rf ~/.local/share/nvim/tiny-pjs.nvim
+<
+
+
+TRIVIA                                    *tiny-ide.nvim-tiny-ide.nvim-trivia*
+
+I came up with this idea after struggling with LunarVim
+<https://www.lunarvim.org/> which was my favourite before because it didn’t
+modify the default config but uses it’s own launch script. But it has to many
+dependencies for a daily driver. Then I stumbled across kickstart.nvim
+<https://github.com/nvim-lua/kickstart.nvim> and must say for a _starting point
+claiming to be not a distribution_ it looks a little large, since it includes
+mini.nvim <https://github.com/echasnovski/mini.nvim> consiting already of 40
+mini plugins. Finally I decided to start my own configuration and pick my
+plugins with some help from typecraft on youtube
+<https://www.youtube.com/watch?v=zHTeCSVAFNY> (full course
+<https://typecraft.dev/neovim-for-newbs>). So I do the contrary to
+kickstart.nvim <https://github.com/nvim-lua/kickstart.nvim> and call my small
+starter configuration a distribution. During hacking the config I started
+moving out parts into own modules. So finally it’s not as _tiny_ as it was
+meant.
+
+Generated by panvimdoc <https://github.com/kdheepak/panvimdoc>
+
+vim:tw=78:ts=8:noet:ft=help:norl:

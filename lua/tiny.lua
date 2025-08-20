@@ -6,8 +6,16 @@ local M = {}
 
 ---@class TinyConfig
 M.defaults = {
+    ---adds additional terminal commands, default: true
+    ---@type boolean
     terminal = true,
+    ---adds keymaps for movement, default: true
+    ---@type boolean
     keymaps = true,
+    ---adds line numbers on buffers and relative line numbers
+    ---on active window
+    ---@type boolean
+    numbers = true,
 }
 
 M.terminal = function()
@@ -53,11 +61,49 @@ M.bindings = function()
     vim.keymap.set('n', '<leader><S-Tab>', '<cmd>tabp<CR>', { desc = 'previous tab' })
 end
 
+M.numbers = function()
+    local number_group = vim.api.nvim_create_augroup('tiny_line_numbers', { clear = true })
+    vim.api.nvim_create_autocmd(
+        { 'BufRead', 'BufNewFile' },
+        {
+            callback = function(a)
+                if vim.api.nvim_get_option_value('modifiable', { buf = a.buf }) == true then
+                    vim.api.nvim_set_option_value('number', true, { scope = 'local', buf = a.buf })
+                    vim.api.nvim_set_option_value('relativenumber', true, { scope = 'local', buf = a.buf })
+                end
+            end,
+            group = number_group,
+            desc = 'add numbers and relative to new buffer',
+        }
+    )
+    vim.api.nvim.nvim_create_autocmd('WinEnter',
+        {
+            group = number_group,
+            desc = 'add relative numbers on enter',
+            callback = function(a)
+                if vim.api.nvim_get_option_value("number", { scope = 'local', buf = a.buf }) == true then
+                    vim.api.nvim_set_option_value("relativenumber", true, { scope = 'local', buf = a.buf })
+                end
+            end
+        })
+    vim.api.nvim.nvim_create_autocmd('WinLeave',
+        {
+            group = number_group,
+            desc = 'add relative numbers on enter',
+            callback = function(a)
+                if vim.api.nvim_get_option_value("relativenumber", { scope = 'local' }) == true then
+                    vim.api.nvim_set_option_value("relativenumber", false, { scope = 'local' })
+                end
+            end
+        })
+end
+
 ---@param opts TinyConfig?
 M.setup = function(opts)
     local config = vim.tbl_deep_extend('force', M.defaults, opts or {})
     if config.terminal then M.terminal() end
     if config.keymaps then M.bindings() end
+    if config.numbers then M.numbers() end
 end
 
 return M
