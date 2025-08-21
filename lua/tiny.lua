@@ -76,7 +76,7 @@ M.numbers = function()
             desc = 'add numbers and relative to new buffer',
         }
     )
-    vim.api.nvim.nvim_create_autocmd('WinEnter',
+    vim.api.nvim_create_autocmd('WinEnter',
         {
             group = number_group,
             desc = 'add relative numbers on enter',
@@ -86,7 +86,7 @@ M.numbers = function()
                 end
             end
         })
-    vim.api.nvim.nvim_create_autocmd('WinLeave',
+    vim.api.nvim_create_autocmd('WinLeave',
         {
             group = number_group,
             desc = 'add relative numbers on enter',
