@@ -1,4 +1,4 @@
 return {
-    'Coding4Glory/tiny-templates.nvim',
+    'Coding4Glory/modneo-templates.nvim',
     opts = {},
 }

@@ -1,4 +1,4 @@
 return {
-    'Coding4Glory/tiny-pjs.nvim',
+    'Coding4Glory/modneo-pjs',
     opts = {},
 }

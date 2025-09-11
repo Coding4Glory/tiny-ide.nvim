@@ -114,8 +114,8 @@ and advanced in the tiny-ide folder.
     - [treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - tiny
     - [modeline](https://github.com/Coding4Glory/tiny-modeline.nvim)
-    - [projectsettings](https://github.com/Coding4Glory/tiny-pjs.nvim)
-    - [templates](https://github.com/Coding4Glory/tiny-teplates.nvim)
+    - [projectsettings](https://github.com/Coding4Glory/modneo-pjs)
+    - [templates](https://github.com/Coding4Glory/modneo-teplates.nvim)
     - [windows](https://github.com/Coding4Glory/tiny-windows.nvim)
 - custom
     - [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua) *(bonus)*
