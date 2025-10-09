@@ -7,5 +7,5 @@ vim.cmd("filetype plugin indent on")
 
 -- load plugins
 require("plugins.lazy") -- bootstrap and configure lazy
-require("tiny").setup({}) -- builtin plugins
+require("builtin").setup({}) -- builtin plugins
 

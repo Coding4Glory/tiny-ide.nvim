@@ -16,6 +16,8 @@ M.defaults = {
     ---on active window
     ---@type boolean
     numbers = true,
+    ---adds a dev log reminder if the proper folder is present
+    devlog = false,
 }
 
 M.terminal = function()
@@ -98,12 +100,27 @@ M.numbers = function()
         })
 end
 
+M.devlog = function(folder)
+    local devlog_path = vim.fs.joinpath(vim.uv.cwd(), folder)
+    if vim.uv.fs_stat(devlog_path) == nil then return end
+
+    local log_file = os.date('%Y-%m-%d') .. '.md'
+    vim.api.nvim_create_autocmd('VimLeavePre', {
+        callback = function (_)
+            if vim.uv.fs_stat(vim.fs.joinpath(devlog_path, log_file)) == nil then
+                vim.cmd('edit ' .. vim.fs.joinpath(folder, log_file))
+            end
+        end
+    })
+end
+
 ---@param opts TinyConfig?
 M.setup = function(opts)
     local config = vim.tbl_deep_extend('force', M.defaults, opts or {})
     if config.terminal then M.terminal() end
     if config.keymaps then M.bindings() end
     if config.numbers then M.numbers() end
+    if type(config.devlog) == 'string' then M.devlog(config.devlog) end
 end
 
 return M
