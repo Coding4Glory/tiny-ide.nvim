@@ -1,4 +1,4 @@
 return {
-    'Coding4Glory/tiny-modeline.nvim',
+    'Coding4Glory/modneo-modeline',
     opts = {},
 }
